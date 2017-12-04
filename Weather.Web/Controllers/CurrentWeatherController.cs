@@ -24,12 +24,9 @@ namespace Weather.Web.Controllers
         [HttpGet("{city}")]
         public async Task<IActionResult> Get(string city)
         {
-            using (logger.BeginScope($"Current weather call of {city}"))
-            {
-                var weatherResult = await weatherService.GetCurrentWeather(city);
-                logger.LogDebug($"Min: {weatherResult.Minimum}, Max: {weatherResult.Maximum}");
-                return Ok(weatherResult);
-            }
+            var weatherResult = await weatherService.GetCurrentWeather(city);
+            logger.LogDebug($"Min: {weatherResult.Minimum}, Max: {weatherResult.Maximum}");
+            return Ok(weatherResult);
         }
     }
 }
