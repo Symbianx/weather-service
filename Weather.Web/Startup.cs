@@ -33,7 +33,7 @@ namespace Weather.Web
             {
                 var options = serviceCollection.GetRequiredService<IOptionsSnapshot<OpenWeatherMapOptions>>();
                 return new OpenWeatherMapService(options.Value.ApiKey);
-            }); ;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,10 +42,10 @@ namespace Weather.Web
             app.UseMiddleware<ExceptionLoggingMiddleware>();
             app.UseMiddleware<ExtraHeaderMiddleware>();
 
-            // if (env.IsDevelopment())
-            // {
-            //     app.UseDeveloperExceptionPage();
-            // }
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //}
 
             app.UseMvc();
         }
